@@ -1,0 +1,21 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    restart: unless-stopped
+    volumes:
+      - ./database.sqlite:/app/database.sqlite
+      - ./data:/app/data
+      - ./frontend:/app/frontend
+    ports:
+      - '8080:8080'
+    networks:
+      - anderdog
+networks:
+  anderdog:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 100.50.0.0/16
+          gateway: 100.50.0.1
