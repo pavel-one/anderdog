@@ -5,6 +5,9 @@ import (
 	"github.com/oschwald/geoip2-golang"
 	"github.com/pavel-one/anderdog/internal/repository"
 	"net"
+	"os"
+	"strconv"
+	"strings"
 	"time"
 )
 
@@ -31,7 +34,7 @@ func (c *Controller) Index(ctx fiber.Ctx) error {
 		cityName = rec.City.Names["ru"]
 	}
 
-	_, err = c.rep.Create(repository.Visit{
+	i, err := c.rep.Create(repository.Visit{
 		Time: time.Now(),
 		IP:   ctx.IP(),
 		City: cityName,
@@ -41,7 +44,14 @@ func (c *Controller) Index(ctx fiber.Ctx) error {
 		return fiber.NewError(fiber.StatusInternalServerError, err.Error())
 	}
 
-	return ctx.JSON(fiber.Map{
-		"success": true,
-	})
+	f, err := os.ReadFile("frontend/index.html")
+	if err != nil {
+		return fiber.NewError(fiber.StatusInternalServerError, err.Error())
+	}
+
+	iStr := strconv.Itoa(i)
+	out := strings.ReplaceAll(string(f), `%d`, iStr)
+
+	ctx.Set(fiber.HeaderContentType, fiber.MIMETextHTML)
+	return ctx.SendString(out)
 }

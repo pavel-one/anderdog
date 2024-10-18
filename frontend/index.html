@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AnderDog Я НЕ РЕПЕР!!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="logo">
+            АНДЕР<span class="accent">ДОГ</span>
+        </div>
+        <div class="sublogo">
+            ДА <span class="sublogo-line">НЕ</span> РЕПЕР Я!
+        </div>
+        <div class="choice">
+            <div class="btn-wrapper">
+                <div class="btn" data-target="#yes">
+                    Быть репером
+                </div>
+                <div class="btn" data-target="#no">
+                    Быть не репером
+                </div>
+            </div>
+        </div>
+        <div class="video-wrapper">
+            <div id="yes">
+                <video width="100%" controls autoplay>
+                    <source src="yes.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div id="no" style="display: none">
+                <video width="100%" controls>
+                    <source src="no.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        <div class="post">
+            Кстати, эту страницу посетили уже %d раз :3
+        </div>
+    </div>
+</body>
+</html>

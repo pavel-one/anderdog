@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/gofiber/fiber/v3"
+	"github.com/gofiber/fiber/v3/middleware/static"
 	"github.com/pavel-one/anderdog/internal/controller"
 	"github.com/pavel-one/anderdog/internal/database"
 	"github.com/pavel-one/anderdog/internal/geo"
@@ -28,5 +29,6 @@ func main() {
 	ctrl := controller.New(rep, g)
 
 	app.Get("/", ctrl.Index)
+	app.Get("/*", static.New("frontend"))
 	log.Fatal(app.Listen(":8080"))
 }
