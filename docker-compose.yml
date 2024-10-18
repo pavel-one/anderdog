@@ -8,8 +8,8 @@ services:
       - ./database.sqlite:/app/database.sqlite
       - ./data:/app/data
       - ./frontend:/app/frontend
-    ports:
-      - '8080:8080'
+#    ports:
+#      - '8080:8080'
     networks:
       - anderdog
 networks:
