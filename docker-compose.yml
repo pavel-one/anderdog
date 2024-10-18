@@ -11,7 +11,8 @@ services:
 #    ports:
 #      - '8080:8080'
     networks:
-      - anderdog
+      anderdog:
+        ipv4_address: 100.50.0.2
 networks:
   anderdog:
     driver: bridge
